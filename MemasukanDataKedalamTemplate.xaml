@@ -1,0 +1,418 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="MemasukanDataKedalamTemplate" this:MemasukanDataKedalamTemplate.in_RentangData="Last Month" this:MemasukanDataKedalamTemplate.in_TanggalAmbilData="20220513" this:MemasukanDataKedalamTemplate.in_KodeSensor="B-401" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:be="clr-namespace:BalaReva.EasyDataTable;assembly=BalaReva.EasyDataTable" xmlns:bew="clr-namespace:BalaReva.Excel.WorkBook;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_RentangData" Type="InArgument(x:String)" />
+    <x:Property Name="in_TanggalAmbilData" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_KodeSensor" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>740,1830</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+      <x:String>BalaReva.Excel.Utilities</x:String>
+      <x:String>BalaReva.Excel.WorkBook</x:String>
+      <x:String>BalaReva.EasyDataTable</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="43">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph.Core</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Utilities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyDataTable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Memasukan Data Kedalam Template" sap:VirtualizedContainerService.HintSize="563,1765" sap2010:WorkflowViewState.IdRef="Sequence_39">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="DayString" />
+      <Variable x:TypeArguments="x:String" Name="DateToday" />
+      <Variable x:TypeArguments="x:String" Name="DateTimeString" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="Workbook" />
+      <Variable x:TypeArguments="x:String" Default="D:\Tugas\Kuliah\PTA" Name="DataPath" />
+      <Variable x:TypeArguments="x:String" Default="D:\Tugas\Kuliah\PTA\Template Dokumen Monitoring v (version 2).xlsx" Name="TemplatePath" />
+      <Variable x:TypeArguments="x:String" Default="Data\ClearSheet.txt" Name="CleanSheetVBA_Path" />
+      <Variable x:TypeArguments="x:String" Default="D:\Tugas\RPA\UiPath Studio Project\Water Level Monitoring\Data\Hasil.pdf" Name="OutputPath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_Today" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[DataPath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("DataPath").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[TemplatePath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("TemplatePath").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[CleanSheetVBA_Path]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("CleanSheetVBA_Path").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[OutputPath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("OutputPath").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[DT]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[DataPath+&quot;\sensor_&quot; + in_KodeSensor + &quot;_&quot;+in_TanggalAmbilData+&quot;_&quot;+in_RentangData+&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="521,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadCsvFile>
+    <be:ColumnDataTypeConvertor ColumnName="{x:Null}" NullValue="{x:Null}" ColumnDataType="x:Decimal" ColumnIndex="[{4}]" DisplayName="Change Column DataType" sap:VirtualizedContainerService.HintSize="521,22" sap2010:WorkflowViewState.IdRef="ColumnDataTypeConvertor_1" InDataTable="[DT]" OutDataTable="[DT]" />
+    <ui:FilterDataTable DataTable="[DT]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="521,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[DT]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument BooleanOperator="And" Operator="LT">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:Int32">[4]</InArgument>
+            </ui:FilterOperationArgument.Column>
+            <ui:FilterOperationArgument.Operand>
+              <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+            </ui:FilterOperationArgument.Operand>
+          </ui:FilterOperationArgument>
+          <ui:FilterOperationArgument BooleanOperator="Or" Operator="GT">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:Int32">[4]</InArgument>
+            </ui:FilterOperationArgument.Column>
+            <ui:FilterOperationArgument.Operand>
+              <InArgument x:TypeArguments="x:Int32">[800]</InArgument>
+            </ui:FilterOperationArgument.Operand>
+          </ui:FilterOperationArgument>
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <x:Null />
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:FilterDataTable>
+    <ui:FilterDataTable DataTable="[DT]" DisplayName="Filter Data Table Hari Ini" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="521,51" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[DT_Today]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:Int32">[3]</InArgument>
+            </ui:FilterOperationArgument.Column>
+            <ui:FilterOperationArgument.Operand>
+              <InArgument x:TypeArguments="x:String">[in_TanggalAmbilData]</InArgument>
+            </ui:FilterOperationArgument.Operand>
+          </ui:FilterOperationArgument>
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <x:Null />
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:FilterDataTable>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="521,1037" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Workbook="[Workbook]" WorkbookPath="[TemplatePath]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="487,928" sap2010:WorkflowViewState.IdRef="Sequence_36">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="Hour" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Set Data Hari Ini" sap:VirtualizedContainerService.HintSize="445,66" sap2010:WorkflowViewState.IdRef="Sequence_42">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sd:DataTable" Name="DT_Hour" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="416,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[Hour]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InterruptibleDoWhile Condition="[Hour &lt;= 23]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="416,1019" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+                <ui:InterruptibleDoWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="380,854" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Double" Name="LevelAir" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:FilterDataTable DataTable="[DT_Today]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="338,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[DT_Hour]" SelectColumnsMode="Keep">
+                      <ui:FilterDataTable.Filters>
+                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                          <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                            <ui:FilterOperationArgument.Column>
+                              <InArgument x:TypeArguments="x:Int32">[3]</InArgument>
+                            </ui:FilterOperationArgument.Column>
+                            <ui:FilterOperationArgument.Operand>
+                              <InArgument x:TypeArguments="x:String">[Hour.ToString+"."]</InArgument>
+                            </ui:FilterOperationArgument.Operand>
+                          </ui:FilterOperationArgument>
+                        </scg:List>
+                      </ui:FilterDataTable.Filters>
+                      <ui:FilterDataTable.SelectColumns>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <x:Null />
+                        </scg:List>
+                      </ui:FilterDataTable.SelectColumns>
+                    </ui:FilterDataTable>
+                    <Assign sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Double">[LevelAir]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Double">0</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DT_Hour]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="338,271" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Double">[LevelAir]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Double">[LevelAir+Double.Parse(CurrentRow("Date").ToString)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                    </ui:ForEachRow>
+                    <If Condition="[Hour &lt;=11]" sap:VirtualizedContainerService.HintSize="338,51" sap2010:WorkflowViewState.IdRef="If_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ExcelWriteCell Cell="[&quot;C&quot;+(Hour+15).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Sheet1" Text="[LevelAir.ToString]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ExcelWriteCell Cell="[&quot;F&quot;+(Hour+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Sheet1" Text="[LevelAir.ToString]" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <Assign sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[Hour]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[Hour+1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ui:InterruptibleDoWhile.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InterruptibleDoWhile>
+            </Sequence>
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[CleanSheetVBA_Path]" DisplayName="Invoke VBA Hapus Data" EntryMethodName="ClearSheet" sap:VirtualizedContainerService.HintSize="445,87" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+            <ui:ExcelWriteRange AddHeaders="False" DataTable="[DT]" DisplayName="Write All Data" sap:VirtualizedContainerService.HintSize="445,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Data" StartingCell="A1" />
+            <ui:ExcelWriteCell Cell="B7" DisplayName="Write Hari Tanggal" sap:VirtualizedContainerService.HintSize="445,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Sheet1" Text="[&quot;: &quot;+Date.Now.ToString(“ddddddd, dd/MMM /yyyy”)]" />
+            <ui:ExcelWriteCell Cell="B8" DisplayName="Write Nama Sungai" sap:VirtualizedContainerService.HintSize="445,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Sheet1" Text="[&quot;: &quot;+in_Config(in_KodeSensor).ToString]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="445,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,398" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelWriteCell Text="{x:Null}" Cell="B10" DisplayName="Write Threshold Atas" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="Sheet1" />
+                    <ui:ExcelWriteCell Text="{x:Null}" Cell="B11" DisplayName="Write Treshold Bawah" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="Sheet1" />
+                  </Sequence>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="445,22" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+            <bew:ExportWorkBook CellRange="{x:Null}" ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="False" Delay="3" DisplayName="Export WorkBook" ExportPath="[OutputPath]" FilePath="[TemplatePath]" FormatType="PDF" sap:VirtualizedContainerService.HintSize="445,69" sap2010:WorkflowViewState.IdRef="ExportWorkBook_2" SheetName="Sheet1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </bew:ExportWorkBook>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+  </Sequence>
+</Activity>
